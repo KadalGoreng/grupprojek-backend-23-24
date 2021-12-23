@@ -23,10 +23,22 @@ class HotelController {
             const state = body.address.state;
             const image = body.image;
             const email = body.email;
-            const phone_num = body.phone_num;
+            const phone_number = body.phone_number;
             const url = body.url;
 
-            const hotel = new HotelModel ({name:name, description:description, address:address, street:street, district:district, sub_district:sub_district, postal_code:postal_code, state:state, image:image, email:email, phone_num:phone_num, url:url });
+            const wotel = new HotelModel ({
+                name: name,
+                address: address,
+                street: street,
+                district: district,
+                sub_district: sub_district,
+                postal_code: postal_code,
+                state: state,
+                image: image,
+                email: email,
+                phone_number: phone_number,
+                url: url
+            });
 
             const saved = await hotel.save();
             res.status(201).send(saved);            
@@ -38,8 +50,8 @@ class HotelController {
 
     static async getAllHotel(req, res) {
         try {
-            const hotelList = await hotelModel.find()
-            res.status(200).send(hotelList);
+            const wisataList = await WisataModel.find()
+            res.status(200).send(wisataList);
         } catch (error) {
             res.status(500).send({err : error})
         }
@@ -49,8 +61,8 @@ class HotelController {
         try {
             const id = req.params.id;
 
-            const hotelList = await HotelModel.findOne({_id: id})
-            res.status(200).send(hotelList)
+            const wisataList = await WisataModel.findOne({_id: id})
+            res.status(200).send(wisataList)
         } catch (error) {
             res.status(500).send({err: error})
         }
@@ -69,10 +81,22 @@ class HotelController {
             const state = body.address.state;
             const image = body.image;
             const email = body.email;
-            const phone_num = body.phone_num;
+            const phone_number = body.phone_number;
             const url = body.url;
 
-            await HotelModel.updateOne({_id: id}, {name:name, description:description, address:address, street:street, district:district, sub_district:sub_district, postal_code:postal_code, state:state,image:image, email:email, phone_num:phone_num, url:url  });
+            await HotelModel.updateOne({_id: id}, {
+                name: name,
+                address: address,
+                street: street,
+                district: district,
+                sub_district: sub_district,
+                postal_code: postal_code,
+                state: state,
+                image: image,
+                email: email,
+                phone_number: phone_number,
+                url: url,
+            })
 
             res.status(200).send({message: "Success"})
 
@@ -90,7 +114,7 @@ class HotelController {
         }
       }
 
-    static async deleteHotel(req, res) {
+      static async deleteHotel(req, res) {
         try {
             const id = req.params.id;
             await HotelModel.deleteOne({_id: id})
