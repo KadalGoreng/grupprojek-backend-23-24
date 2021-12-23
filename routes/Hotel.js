@@ -4,13 +4,13 @@ const HotelController = require("../controllers/Hotel.controller")
 
 const router = express.Router()
 
-router.get("/", HotelController.getSearchHotelbyKota)
-router.post("/addhotel", HotelController.inputHotel)
+router.post("/addwisata", HotelController.inputHotel)
 router.get("/", HotelController.getAllHotel)
-router.get("/:id_hotel", HotelController.viewHotelById)
-router.patch("/:id_hotel", HotelController.updateHotel)
-router.get("/:id_hotel", HotelController.getPopularHotel)
+router.get("/:id", HotelController.viewHotelById)
+router.patch("/:id", HotelController.updateHotel)
 router.delete("/:id", HotelController.deleteHotel)
+router.get("/:id", HotelController.getPopularHotel)
+router.get("/", HotelController.getSearchHotelbyKota)
 
 
 module.exports = router
