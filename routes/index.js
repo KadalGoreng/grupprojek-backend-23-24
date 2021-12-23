@@ -1,5 +1,6 @@
 const express = require("express");
 
+const auth = require("../middleware/auth");
 
 const hotelRoutes = require("./hotel");
 const reviewRoutes = require("./review");
@@ -17,11 +18,9 @@ router.get("/ping", (req, res) => {
   res.status(200).send(ready);
 });
 
-
-router.use("/hotel", hotelRoutes);
+router.use("/hotel", auth, hotelRoutes);
 router.use("/", reviewRoutes);
 router.use("/users", userRoutes);
-router.use("/wisata", wisataRoutes);
-
+router.use("/wisata", auth, wisataRoutes);
 
 module.exports = router;

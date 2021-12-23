@@ -3,8 +3,6 @@ dotenv.config();
 
 const express = require("express");
 
-const bodyParser = require("body-parser");
-
 const routes = require("./routes");
 const openDBConnection = require("./helpers/db");
 const auth = require("./middleware/auth");
@@ -14,7 +12,6 @@ const uri = process.env.MONGO_URI;
 
 async function main() {
   try {
-
     // mastikan database connect, baru kita jalankan app.
     await openDBConnection(uri);
 
@@ -24,9 +21,9 @@ async function main() {
 
     app.use(routes);
 
-    app.use("/protected", auth, (req, res) => {
-      res.end(`Hi ${req.user.name}, you are authenticated`);
-    });
+    // app.use("/protected", auth, (req, res) => {
+    //   res.end(`Hi ${req.user.name}, you are authenticated`);
+    // });
 
     app.use((req, res, next) => {
       const err = new Error("not found");
