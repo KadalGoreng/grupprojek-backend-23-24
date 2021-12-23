@@ -6,7 +6,8 @@ const router = express.Router()
 
 router.post("/addwisata", WisataController.inputWisata)
 router.get("/", WisataController.viewAllWisata)
-router.get("/:id_wisata", WisataController.viewWisataById)
-router.patch("/:id_wisata", WisataController.updateWisata)
+router.get("/:id", WisataController.viewWisataById)
+router.patch("/:id", WisataController.updateWisata)
+router.delete("/:id", WisataController.deleteWisata)
 
 module.exports = router

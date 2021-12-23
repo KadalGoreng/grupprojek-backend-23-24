@@ -40,6 +40,11 @@ class WisataController {
 
     static async viewAllWisata(req, res) {
         try {
+            // const body = req.body;
+            // const name = body.name;
+            // const image = body.image;
+            // const rating = body.rating;
+            
             const wisataList = await WisataModel.find()
             res.status(200).send(wisataList);
         } catch (error) {
@@ -98,6 +103,16 @@ class WisataController {
 
             res.status(200).send({message: "Success"})
 
+        } catch (error) {
+            res.status(500).send({err: error})
+        }
+    }
+
+    static async deleteWisata(req, res) {
+        try {
+            const id = req.params.id;
+            await WisataModel.deleteOne({_id: id})
+            res.status(200).send({message: `${id} has been Deleted`})
         } catch (error) {
             res.status(500).send({err: error})
         }
