@@ -1,19 +1,27 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const HotelsSchema = new mongoose.Schema(
+const hotelSchema = new mongoose.Schema(
     {
         name: {
             type: String,
         },
-
-        description: {
-            type: String,
-        },
-        
         address: {
-            type: String,
+            street: {
+                type: String,
+            },
+            district: {
+                type: String,
+            },
+            sub_district: {
+                type: String,
+            },
+            postal_code: {
+                type: Number,
+            },
+            state: {
+                type: String,
+            },
         },
-        
         rating: {
             type: Number,
         },
@@ -23,25 +31,17 @@ const HotelsSchema = new mongoose.Schema(
         email: {
             type: String,
         },
-        phone_num: {
+        phone_number: {
             type: Number,
         },
         url: {
             type: String,
-        },
-        createdAt: {
-            type: Date,
-        },
-        updatedAt: {
-            type: Date,
-        },
-    },
-    {
+        }
+    },{
         timestamps: true,
-        versionKey: false,
+        versionKey: false
     }
 );
 
-const HotelsModel = mongoose.model('Hotels', HotelsSchema)
-
-module.exports = HotelsModel
+const HotelModel = mongoose.model("Hotel", hotelSchema);
+module.exports = HotelModel;

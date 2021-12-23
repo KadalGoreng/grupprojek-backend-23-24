@@ -1,6 +1,6 @@
 const express = require("express");
 
-const HotelRoutes = require("./Hotel");
+const hotelRoutes = require("./hotel");
 
 // creates a new router instance.
 const router = express.Router();
@@ -13,6 +13,6 @@ router.get("/ping", (req, res) => {
     res.status(200).send(ready);
 })
 
-router.use("/Hotel", HotelRoutes);
+router.use("/hotel", hotelRoutes);
 
-module.exports = router
+module.exports = router;
