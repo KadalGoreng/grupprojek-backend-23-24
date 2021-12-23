@@ -1,23 +1,3 @@
-// const dotenv = require("dotenv");
-// dotenv.config();
-
-// const express = require("express");
-// const app = express();
-// const mongoose = require("mongoose");
-
-// mongoose.connect(mongoos,);
-
-// const port = process.env.PORT || 3000;
-// const uri = process.env.MONGO_URI;
-
-// app.get("/", (req, res) => {
-//   res.end("welcome!");
-// });
-
-// app.listen(port, () => {
-//   console.log("server runing at", port);
-// });
-
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -30,10 +10,6 @@ const auth = require("./middleware/auth");
 
 const port = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;
-// const dbOptions = {
-//     user: process.env.MONGO_USER,
-//     pass: process.env.MONGO_PASS
-// }
 
 async function main() {
   try {
