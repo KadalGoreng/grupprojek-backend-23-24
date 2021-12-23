@@ -5,7 +5,7 @@ class HotelController {
     static async getSearchHotelbyKota(req, res) {
         try {
             const HotelList = await HotelModel.find()
-            res.status(200).send(HotelList);
+            res.status(200).send(hotelList);
         } catch (error) {
             res.status(500).send({err: error})
         }
@@ -51,7 +51,7 @@ class HotelController {
     static async getAllHotel(req, res) {
         try {
             const hotelList = await HotelModel.find()
-            res.status(200).send(wisataList);
+            res.status(200).send(hotelList);
         } catch (error) {
             res.status(500).send({err : error})
         }
@@ -108,7 +108,7 @@ class HotelController {
     static async getPopularHotel(req, res) {
         try {
             const HotelList = await HotelModel.find()
-            res.status(200).send(HotelList);
+            res.status(200).send(hotelList);
         } catch (error) {
             res.status(500).send({err: error})
         }
