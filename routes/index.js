@@ -13,6 +13,6 @@ router.get("/ping", (req, res) => {
   res.status(200).send(ready);
 });
 
-router.use("/review", reviewRoutes);
+router.use("/", reviewRoutes);
 
 module.exports = router;
