@@ -1,6 +1,6 @@
 const express = require("express");
 
-const mapsRoutes = require("./maps");
+const wisataRoutes = require("./wisata");
 
 // creates a new router instance.
 const router = express.Router();
@@ -13,6 +13,6 @@ router.get("/ping", (req, res) => {
   res.status(200).send(ready);
 });
 
-router.use("/maps", mapsRoutes);
+router.use("/wisata", wisataRoutes);
 
 module.exports = router;

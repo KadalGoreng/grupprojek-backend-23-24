@@ -36,16 +36,10 @@ const wisataSchema = new mongoose.Schema(
         },
         url: {
             type: String,
-        },
-        createdAt: {
-            type: Date,
-        },
-        updatedAt: {
-            type: Date,
-        },
+        }
     },{
         timestamps: true,
-        versionKey: false,
+        versionKey: false
     }
 );
 

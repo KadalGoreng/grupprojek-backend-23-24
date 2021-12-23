@@ -1,4 +1,4 @@
-const MapsModel = require("../models/wisata.model");
+const WisataModel = require("../models/wisata.model");
 
 class WisataController {
     static async inputWisata(req, res) {
