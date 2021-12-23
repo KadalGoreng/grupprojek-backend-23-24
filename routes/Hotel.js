@@ -1,6 +1,6 @@
 const express = require("express")
 
-const HotelController = require("../controllers/hotel.controller")
+const HotelController = require("../controllers/Hotel.controller")
 
 const router = express.Router()
 

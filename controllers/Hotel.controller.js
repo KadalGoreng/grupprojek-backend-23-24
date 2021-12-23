@@ -1,4 +1,4 @@
-const HotelModel = require("../models/hotel.model");
+const HotelModel = require("../models/Hotel.model");
 
 class HotelController {
 
