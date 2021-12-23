@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const express = require("express");
+
 const bodyParser = require("body-parser");
 
 const routes = require("./routes");
@@ -13,6 +14,7 @@ const uri = process.env.MONGO_URI;
 
 async function main() {
   try {
+
     // mastikan database connect, baru kita jalankan app.
     await openDBConnection(uri);
 
