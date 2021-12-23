@@ -23,6 +23,7 @@ class ReviewController {
             const harga = body.harga;
             const foto = body.foto;
             const saran = body.saran;
+            const review_loc = req.params.review_loc;
 
             const review = new ReviewModel({
                 judul: judul,
@@ -43,12 +44,24 @@ class ReviewController {
                 harga: harga,
                 foto: foto,
                 saran: saran,
+                review_loc: review_loc,
             });
 
             const saved = await review.save();
             res.status(201).send(saved);
         } catch (error) {
             res.status(500).send({ err: error });
+        }
+    }
+
+    static async getReviewByLoc(req, res) {
+        try {
+            const id = req.params.id;
+
+            const reviewList = await ReviewModel.find({ review_loc: id })
+            res.status(200).send(reviewList);
+        } catch (error) {
+            res.status(500).send({ err: error })
         }
     }
 }

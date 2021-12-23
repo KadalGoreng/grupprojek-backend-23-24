@@ -53,6 +53,9 @@ const reviewSchema = new mongoose.Schema({
     saran: {
         type: String,
     },
+    review_loc: {
+        type: String,
+    },
 }, {
     timestamps: true,
     versionKey: false,
