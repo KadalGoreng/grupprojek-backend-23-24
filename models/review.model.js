@@ -1,63 +1,65 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema(
+  {
     judul: {
-        type: String,
+      type: String,
     },
     ulasan: {
-        type: String,
+      type: String,
     },
     rating: {
-        //type: ,
+      type: Number,
     },
     fasilitas: {
-        bukti_vaksin: {
-            type: String,
-        },
-        jarak_fisik: {
-            type: String,
-        },
-        cuci_tangan: {
-            type: String,
-        },
-        parkir: {
-            type: String,
-        },
-        unik: {
-            type: String,
-        },
-        multilanguage: {
-            type: String,
-        },
-        pelayanan: {
-            type: String,
-        },
+      bukti_vaksin: {
+        type: String,
+      },
+      jarak_fisik: {
+        type: String,
+      },
+      cuci_tangan: {
+        type: String,
+      },
+      parkir: {
+        type: String,
+      },
+      unik: {
+        type: String,
+      },
+      multilanguage: {
+        type: String,
+      },
+      pelayanan: {
+        type: String,
+      },
     },
     penilaian: {
-        layanan: {
-            type: Number,
-        },
-        kebersihan: {
-            type: Number,
-        },
-        nilai: {
-            type: Number,
-        },
+      layanan: {
+        type: Number,
+      },
+      kebersihan: {
+        type: Number,
+      },
+      nilai: {
+        type: Number,
+      },
     },
     harga: {
-        type: String,
+      type: String,
     },
     foto: {
-        //type:
+      type: String,
     },
     saran: {
-        type: String,
+      type: String,
     },
-}, {
+  },
+  {
     timestamps: true,
-    versionKey: false
-})
+    versionKey: false,
+  }
+);
 
-
-const ReviewModel = mongoose.model("Review", reviewSchema)
-module.exports = ReviewModel
+const ReviewModel = mongoose.model("review", reviewSchema);
+module.exports = ReviewModel;

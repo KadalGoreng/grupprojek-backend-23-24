@@ -1,11 +1,11 @@
-const express = require("express")
+const express = require("express");
 
-const ReviewController = require("../controllers/review.controller")
+const ReviewController = require("../controllers/review.controller");
 
 // creates a new router instance.
-const router = express.Router()
+const router = express.Router();
 
-router.post("/hotel/:id_hotel/addreview", ReviewController.createNewReview)
-router.post("/wisata/:id_wisata/addreview", ReviewController.createNewReview)
+router.post("/addreview", ReviewController.createNewReview);
+router.post("/wisata/:id_wisata/addreview", ReviewController.createNewReview);
 
-module.exports = router
+module.exports = router;
