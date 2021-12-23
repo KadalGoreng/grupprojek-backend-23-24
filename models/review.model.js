@@ -8,7 +8,7 @@ const reviewSchema = new mongoose.Schema({
         type: String,
     },
     rating: {
-        //type: ,
+        type: Number,
     },
     fasilitas: {
         bukti_vaksin: {
@@ -48,7 +48,7 @@ const reviewSchema = new mongoose.Schema({
         type: String,
     },
     foto: {
-        //type:
+        type: String,
     },
     saran: {
         type: String,
@@ -56,8 +56,8 @@ const reviewSchema = new mongoose.Schema({
 }, {
     timestamps: true,
     versionKey: false
-})
+});
 
 
-const ReviewModel = mongoose.model("Review", reviewSchema)
-module.exports = ReviewModel
+const ReviewModel = mongoose.model("Review", reviewSchema);
+module.exports = ReviewModel;

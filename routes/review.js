@@ -7,5 +7,6 @@ const router = express.Router()
 
 router.post("/hotel/:id_hotel/addreview", ReviewController.createNewReview)
 router.post("/wisata/:id_wisata/addreview", ReviewController.createNewReview)
+router.get("/", ReviewController.getAllReview)
 
 module.exports = router
