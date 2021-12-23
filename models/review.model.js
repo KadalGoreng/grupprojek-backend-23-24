@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
     judul: {
@@ -55,9 +55,8 @@ const reviewSchema = new mongoose.Schema({
     },
 }, {
     timestamps: true,
-    versionKey: false
+    versionKey: false,
 });
 
-
-const ReviewModel = mongoose.model("Review", reviewSchema);
+const ReviewModel = mongoose.model("review", reviewSchema);
 module.exports = ReviewModel;

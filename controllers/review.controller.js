@@ -1,11 +1,10 @@
-const ReviewModel = require("../models/review.model")
+const ReviewModel = require("../models/review.model");
 
 class ReviewController {
     // Create a new review object and save it to db.
     static async createNewReview(req, res) {
         try {
             const body = req.body;
-
             const judul = body.judul;
             const ulasan = body.ulasan;
             const rating = body.rating;
@@ -20,7 +19,7 @@ class ReviewController {
             const penilaian = body.penilaian;
             const layanan = body.penilaian.layanan;
             const kebersihan = body.penilaian.kebersihan;
-            const nilai = body.pelayanan.nilai;
+            const nilai = body.penilaian.nilai;
             const harga = body.harga;
             const foto = body.foto;
             const saran = body.saran;
@@ -43,25 +42,15 @@ class ReviewController {
                 nilai: nilai,
                 harga: harga,
                 foto: foto,
-                saran: saran
+                saran: saran,
             });
 
-            const saved = await review.save()
+            const saved = await review.save();
             res.status(201).send(saved);
         } catch (error) {
-            res.status(500).send({ err: error })
-        }
-
-    }
-
-    static async getAllReview(req, res) {
-        try {
-            const reviewList = await ReviewModel.find()
-            res.status(200).send(reviewList);
-        } catch (error) {
-            res.status(500).send({ err: error })
+            res.status(500).send({ err: error });
         }
     }
 }
 
-module.exports = ReviewController
+module.exports = ReviewController;
