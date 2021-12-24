@@ -19,6 +19,7 @@ class HotelController {
             const street = body.address.street;
             const district = body.address.district;
             const sub_district = body.address.sub_district;
+            const city = body.address.city
             const postal_code = body.address.postal_code;
             const state = body.address.state;
             const image = body.image;
@@ -32,6 +33,7 @@ class HotelController {
                 street: street,
                 district: district,
                 sub_district: sub_district,
+                city: city,
                 postal_code: postal_code,
                 state: state,
                 image: image,
@@ -50,8 +52,25 @@ class HotelController {
 
     static async getAllHotel(req, res) {
         try {
-            const hotelList = await HotelModel.find()
-            res.status(200).send(hotelList);
+            const sort = req.query.sort
+            const city = req.query.city
+            if(sort == "latest"){
+                const hotelList = await HotelModel.find().sort({ createdAt: -1})
+                res.status(200).send(hotelList);
+
+            }else if(sort == "oldest"){
+                const hotelList = await HotelModel.find().sort({ createdAt: 1})
+                res.status(200).send(hotelList);
+
+            } else if (city) {
+                const hotelList = await HotelModel.find({'address.city': city})
+                res.status(200).send(hotelList);
+
+            } else {
+                const hotelList = await HotelModel.find()
+                res.status(200).send(hotelList);
+            }
+
         } catch (error) {
             res.status(500).send({err : error})
         }
@@ -104,15 +123,6 @@ class HotelController {
             res.status(500).send({err: error})
         }
     }
-
-    static async getPopularHotel(req, res) {
-        try {
-            const HotelList = await HotelModel.find()
-            res.status(200).send(hotelList);
-        } catch (error) {
-            res.status(500).send({err: error})
-        }
-      }
 
       static async deleteHotel(req, res) {
         try {

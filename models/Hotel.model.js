@@ -16,6 +16,9 @@ const hotelSchema = new mongoose.Schema(
       sub_district: {
         type: String,
       },
+      city: {
+        type: String,
+      },
       postal_code: {
         type: Number,
       },
