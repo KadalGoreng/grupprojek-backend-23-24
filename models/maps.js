@@ -9,7 +9,7 @@ const mapsSchema = new mongoose.Schema(
     address: {
       type: String,
     },
-    userId: [{ type: Schema.Types.ObjectId, ref: "users" }],
+    userId: [{ type: Schema.Types.ObjectId, ref: "Users" }],
   },
   {
     timestamps: true,

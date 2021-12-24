@@ -6,8 +6,22 @@ const key = process.env.SECRET_KEY;
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
+const MapsModel = require("../models/maps");
 
 class UserController {
+  static async saveWishlist(req, res) {
+    const maps = await MapsModel.countDocuments({ name: req.body.name, address: req.body.address });
+
+    let result;
+    if (maps) {
+      result = await MapsModel.findOneAndUpdate({ name: req.body.name, address: req.body.address }, { $addToSet: { userId: req.body.userId } }, { new: true });
+    } else {
+      result = await MapsModel.create({ name: req.body.name, address: req.body.address, userId: [req.body.userId] });
+    }
+
+    res.status(201).json(result);
+  }
+
   static async getUsers(req, res) {
     try {
       const usersList = await User.find();
@@ -18,7 +32,7 @@ class UserController {
   }
 
   static async createUser(req, res, next) {
-    const { name, email, password } = req.body;
+    const { username, email, password } = req.body;
     const user = await User.findOne({ email });
     if (user)
       return res.status(403).json({
@@ -26,7 +40,7 @@ class UserController {
           message: "email already in use!",
         },
       });
-    const newUser = new User({ name, email, password });
+    const newUser = new User({ username, email, password });
     try {
       await newUser.save();
       const token = getSignedToken(newUser);
@@ -69,7 +83,7 @@ getSignedToken = (user) => {
     {
       id: user._id,
       email: user.email,
-      name: user.name,
+      username: user.username,
     },
     key,
     { expiresIn: "1h" }

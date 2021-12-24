@@ -1,4 +1,4 @@
-const MapsModel = require("../models/maps.model");
+const MapsModel = require("../models/maps");
 
 class MapsController {
   static async saveMaps(req, res) {
@@ -12,7 +12,6 @@ class MapsController {
         name: name,
         address: address,
       });
-
       const saved = await maps.save();
       res.status(201).send(saved);
     } catch (error) {
@@ -33,7 +32,7 @@ class MapsController {
     try {
       const id = req.params.id;
 
-      const mapsList = await MapsModel.find({ _id: id }).populate("users").execPopulate();
+      const mapsList = await MapsModel.find({ userId: { $elemMatch: { $in: [id] } } });
       res.status(200).send(mapsList);
     } catch (error) {
       res.status(500).send({ err: error });

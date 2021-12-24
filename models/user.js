@@ -2,24 +2,28 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 
-const userSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      lowercase: true,
+      validate: [emailValidator, "incorrect mail format"],
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-    validate: [emailValidator, "incorrect mail format"],
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  wishlistId: [{ type: Schema.Types.ObjectId, ref: "Maps" }],
-});
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
 function emailValidator(value) {
   return /^.+@.+\..+$/.test(value);
@@ -44,4 +48,4 @@ userSchema.methods.isPasswordValid = async function (value) {
   }
 };
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("Users", userSchema);
