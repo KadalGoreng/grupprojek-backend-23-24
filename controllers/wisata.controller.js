@@ -1,4 +1,4 @@
-const WisataModel = require("../models/wisata.model");
+const WisataModel = require("../models/wisata");
 
 class WisataController {
     static async inputWisata(req, res) {
@@ -9,6 +9,7 @@ class WisataController {
             const street = body.address.street;
             const district = body.address.district;
             const sub_district = body.address.sub_district;
+            const city = body.address.city;
             const postal_code = body.address.postal_code;
             const state = body.address.state;
             const image = body.image;
@@ -22,6 +23,7 @@ class WisataController {
                 street: street,
                 district: district,
                 sub_district: sub_district,
+                city: city,
                 postal_code: postal_code,
                 state: state,
                 image: image,
@@ -34,25 +36,35 @@ class WisataController {
             res.status(201).send(saved);            
 
         } catch (error) {
+            console.log(error)
             res.status(500).send({ err: error})
         }
     }
 
     static async viewAllWisata(req, res) {
         try {
-            const wisataList = await WisataModel.find()
-            res.status(200).send(wisataList);
+            const sort = req.query.sort
+            const city = req.query.city
+            if(sort == "latest"){
+                
+                const wisataList = await WisataModel.find().sort({ createdAt: -1})
+                res.status(200).send(wisataList);
+            
+            }else if(sort == "oldest"){
+                
+                const wisataList = await WisataModel.find().sort({ createdAt: 1})
+                res.status(200).send(wisataList);
+            } else if (city) {
+                const wisataList = await WisataModel.find({'address.city': city})
+                res.status(200).send(wisataList);
+                console.log(wisataList)
+            } else {
+                const wisataList = await WisataModel.find()
+                res.status(200).send(wisataList);
+            }
         } catch (error) {
             res.status(500).send({err : error})
-        }
-    }
-
-    static async getPopularWisata(req, res) {
-        try {
-            const sortWisata = await WisataModel.find().sort({createdAt: -1})
-            res.status(200).send(sortWisata);
-        } catch (error) {
-            res.status(500).send({err: error})
+            console.log(error)
         }
     }
 
@@ -113,6 +125,7 @@ class WisataController {
             res.status(500).send({err: error})
         }
     }
+
 };
 
 module.exports = WisataController;

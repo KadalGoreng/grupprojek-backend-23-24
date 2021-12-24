@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema(
   {
+    placeId: {
+      type: String,
+    },
     judul: {
       type: String,
     },

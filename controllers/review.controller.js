@@ -23,8 +23,10 @@ class ReviewController {
       const harga = body.harga;
       const foto = body.foto;
       const saran = body.saran;
+      const placeId = req.params.placeId;
 
       const review = new ReviewModel({
+        placeId: placeId,
         judul: judul,
         ulasan: ulasan,
         rating: rating,
@@ -49,6 +51,18 @@ class ReviewController {
       res.status(201).send(saved);
     } catch (error) {
       res.status(500).send({ err: error });
+      console.log(error)
+    }
+  }
+
+  static async getReviewByLoc(req, res) {
+    try {
+        const id = req.params.placeId;
+
+        const reviewList = await ReviewModel.find({ placeId: id })
+        res.status(200).send(reviewList);
+    } catch (error) {
+        res.status(500).send({ err: error })
     }
   }
 }

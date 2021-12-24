@@ -22,7 +22,7 @@ router.get("/ping", (req, res) => {
 router.use("/hotel", auth, hotelRoutes);
 router.use("/review", auth, reviewRoutes);
 router.use("/users", userRoutes);
-router.use("/wisata", auth, wisataRoutes);
+router.use("/wisata", wisataRoutes);
 router.use("/maps", auth, mapsRoutes);
 
 module.exports = router;

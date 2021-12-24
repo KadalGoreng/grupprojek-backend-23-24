@@ -11,6 +11,7 @@ const MapsModel = require("../models/maps");
 class UserController {
   static async saveWishlist(req, res) {
     const maps = await MapsModel.countDocuments({ name: req.body.name, address: req.body.address });
+    console.log(maps)
 
     let result;
     if (maps) {
@@ -25,6 +26,7 @@ class UserController {
   static async getUsers(req, res) {
     try {
       const usersList = await User.find();
+      console.log(usersList)
       res.status(200).send(usersList);
     } catch (error) {
       res.status(500).send({ err: error });
