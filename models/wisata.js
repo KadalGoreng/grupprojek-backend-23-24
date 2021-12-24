@@ -16,15 +16,15 @@ const wisataSchema = new mongoose.Schema(
       sub_district: {
         type: String,
       },
+      city: {
+        type: String,
+      },
       postal_code: {
         type: Number,
       },
       state: {
         type: String,
       },
-    },
-    rating: {
-      type: Number,
     },
     image: {
       type: String,

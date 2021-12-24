@@ -6,6 +6,7 @@ const ReviewController = require("../controllers/review.controller");
 const router = express.Router();
 
 router.post("/hotel/addreview", ReviewController.createNewReview);
-router.post("/wisata/:id/addreview", ReviewController.createNewReview);
+router.post("/wisata/:placeId/addreview", ReviewController.createNewReview);
+router.get("/wisata/:placeId/reviews", ReviewController.getReviewByLoc);
 
 module.exports = router;

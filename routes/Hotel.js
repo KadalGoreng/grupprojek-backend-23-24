@@ -9,7 +9,6 @@ router.get("/", HotelController.getAllHotel)
 router.get("/:id", HotelController.viewHotelById)
 router.patch("/:id", HotelController.updateHotel)
 router.delete("/:id", HotelController.deleteHotel)
-router.get("/:id", HotelController.getPopularHotel)
 router.get("/", HotelController.getSearchHotelbyKota)
 
 
