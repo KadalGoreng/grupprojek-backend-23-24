@@ -40,15 +40,19 @@ class WisataController {
 
     static async viewAllWisata(req, res) {
         try {
-            // const body = req.body;
-            // const name = body.name;
-            // const image = body.image;
-            // const rating = body.rating;
-            
             const wisataList = await WisataModel.find()
             res.status(200).send(wisataList);
         } catch (error) {
             res.status(500).send({err : error})
+        }
+    }
+
+    static async getPopularWisata(req, res) {
+        try {
+            const sortWisata = await WisataModel.find().sort({createdAt: -1})
+            res.status(200).send(sortWisata);
+        } catch (error) {
+            res.status(500).send({err: error})
         }
     }
 
@@ -62,14 +66,6 @@ class WisataController {
             res.status(500).send({err: error})
         }
     }
-
-    // static async getPopularWisata (req, res) {
-    //     try {
-
-    //     } catch (error) {
-    //         res.status(500).send({err: error})
-    //     }
-    // }
 
     static async updateWisata(req, res) {
         try {
