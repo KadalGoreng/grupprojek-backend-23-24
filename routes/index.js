@@ -2,7 +2,7 @@ const express = require("express");
 
 const auth = require("../middleware/auth");
 
-const hotelRoutes = require("./hotel");
+const hotelRoutes = require("./Hotel");
 const reviewRoutes = require("./review");
 const userRoutes = require("./user");
 const wisataRoutes = require("./wisata");
@@ -19,7 +19,7 @@ router.get("/ping", (req, res) => {
   res.status(200).send(ready);
 });
 
-router.use("/hotel", auth, hotelRoutes);
+router.use("/Hotel", auth, hotelRoutes);
 router.use("/review", auth, reviewRoutes);
 router.use("/users", userRoutes);
 router.use("/wisata", auth, wisataRoutes);
