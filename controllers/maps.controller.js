@@ -1,7 +1,6 @@
 const MapsModel = require("../models/maps.model");
 
 class MapsController {
-
   static async saveMaps(req, res) {
     try {
       const body = req.body;
@@ -9,15 +8,15 @@ class MapsController {
       const name = body.name;
       const address = body.address;
 
-      const maps = new MapsModel ({
+      const maps = new MapsModel({
         name: name,
-        address: address
-      })
+        address: address,
+      });
 
-      const saved = await maps.save()
+      const saved = await maps.save();
       res.status(201).send(saved);
     } catch (error) {
-      res.status(500).send({err: error})
+      res.status(500).send({ err: error });
     }
   }
 
@@ -32,25 +31,24 @@ class MapsController {
 
   static async getMapsByIdUser(req, res) {
     try {
-        const id = req.params.id;
+      const id = req.params.id;
 
-        const mapsList = await MapsModel.find({_id: id})
-        res.status(200).send(mapsList);
+      const mapsList = await MapsModel.find({ _id: id }).populate("users").execPopulate();
+      res.status(200).send(mapsList);
     } catch (error) {
-        res.status(500).send({err: error})
+      res.status(500).send({ err: error });
     }
   }
 
   static async deleteMaps(req, res) {
     try {
-        const id = req.params.id;
-        await MapsModel.deleteOne({_id: id})
-        res.status(200).send({message: `${id} has been Deleted`})
+      const id = req.params.id;
+      await MapsModel.deleteOne({ _id: id });
+      res.status(200).send({ message: `${id} has been Deleted` });
     } catch (error) {
-        res.status(500).send({err: error})
+      res.status(500).send({ err: error });
     }
   }
-
 }
 
 module.exports = MapsController;

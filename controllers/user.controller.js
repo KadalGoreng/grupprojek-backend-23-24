@@ -8,6 +8,15 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 class UserController {
+  static async getUsers(req, res) {
+    try {
+      const usersList = await User.find();
+      res.status(200).send(usersList);
+    } catch (error) {
+      res.status(500).send({ err: error });
+    }
+  }
+
   static async createUser(req, res, next) {
     const { name, email, password } = req.body;
     const user = await User.findOne({ email });

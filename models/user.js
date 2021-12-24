@@ -18,7 +18,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  wishlist: [{ type: Schema.Types.ObjectId, ref: "maps" }],
+  wishlistId: [{ type: Schema.Types.ObjectId, ref: "Maps" }],
 });
 
 function emailValidator(value) {

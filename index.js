@@ -5,7 +5,6 @@ const express = require("express");
 
 const routes = require("./routes");
 const openDBConnection = require("./helpers/db");
-const auth = require("./middleware/auth");
 
 const port = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;

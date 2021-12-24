@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const mapsSchema = new mongoose.Schema(
   {
@@ -8,6 +9,7 @@ const mapsSchema = new mongoose.Schema(
     address: {
       type: String,
     },
+    userId: [{ type: Schema.Types.ObjectId, ref: "users" }],
   },
   {
     timestamps: true,
