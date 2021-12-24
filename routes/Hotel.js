@@ -4,7 +4,7 @@ const HotelController = require("../controllers/Hotel.controller")
 
 const router = express.Router()
 
-router.post("/addwisata", HotelController.inputHotel)
+router.post("/addHotel", HotelController.inputHotel)
 router.get("/", HotelController.getAllHotel)
 router.get("/:id", HotelController.viewHotelById)
 router.patch("/:id", HotelController.updateHotel)

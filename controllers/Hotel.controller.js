@@ -5,7 +5,7 @@ class HotelController {
     static async getSearchHotelbyKota(req, res) {
         try {
             const HotelList = await HotelModel.find()
-            res.status(200).send(HotelList);
+            res.status(200).send(hotelList);
         } catch (error) {
             res.status(500).send({err: error})
         }
@@ -26,7 +26,7 @@ class HotelController {
             const phone_number = body.phone_number;
             const url = body.url;
 
-            const wotel = new HotelModel ({
+            const hotel = new HotelModel ({
                 name: name,
                 address: address,
                 street: street,
@@ -50,8 +50,8 @@ class HotelController {
 
     static async getAllHotel(req, res) {
         try {
-            const wisataList = await WisataModel.find()
-            res.status(200).send(wisataList);
+            const hotelList = await HotelModel.find()
+            res.status(200).send(hotelList);
         } catch (error) {
             res.status(500).send({err : error})
         }
@@ -61,8 +61,8 @@ class HotelController {
         try {
             const id = req.params.id;
 
-            const wisataList = await WisataModel.findOne({_id: id})
-            res.status(200).send(wisataList)
+            const hotelList = await HotelModel.findOne({_id: id})
+            res.status(200).send(hotelList)
         } catch (error) {
             res.status(500).send({err: error})
         }
@@ -108,7 +108,7 @@ class HotelController {
     static async getPopularHotel(req, res) {
         try {
             const HotelList = await HotelModel.find()
-            res.status(200).send(HotelList);
+            res.status(200).send(hotelList);
         } catch (error) {
             res.status(500).send({err: error})
         }
@@ -126,3 +126,4 @@ class HotelController {
 };
 
 module.exports = HotelController;
+
