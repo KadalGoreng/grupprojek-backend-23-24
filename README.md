@@ -116,11 +116,6 @@ Request :
   "url": "string"
 }
 ```
-
-Relation: One to Many
-Description: One hotel -> Many Asset
-Method: Referencing
-
 Response :
 
 ```json
@@ -445,11 +440,6 @@ Request :
   "url": "string"
 }
 ```
-
-Relation: One to Many
-Description: One wisata -> Many Asset
-Method: Referencing
-
 Response :
 
 ```json
